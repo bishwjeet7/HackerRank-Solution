@@ -1,8 +1,8 @@
-#include<iostream>
+#include <bits/stdc++.h>
 using namespace std;
 class Node
 {
-    public:
+public:
     int value;
     Node *next;
 
@@ -18,7 +18,7 @@ class Node
 };
 class singlyLinkedList
 {
-    public:
+public:
     Node *head;
     singlyLinkedList()
     {
@@ -36,7 +36,6 @@ class singlyLinkedList
         if (head == NULL)
         {
             head = n;
-            cout << "Node appended in head." << endl;
         }
         else
         {
@@ -45,7 +44,6 @@ class singlyLinkedList
                 ptr = ptr->next;
             }
             ptr->next = n;
-           cout << "Node appended." << endl;
         }
     }
 
@@ -54,10 +52,7 @@ class singlyLinkedList
     {
         Node *ptr = head;
         Node *tail = NULL;
-        if (head == NULL)
-        {
-            cout << "No any data to show" << endl;
-        }
+        if (head == NULL){}
         else
         {
             while (ptr != NULL)
@@ -65,30 +60,34 @@ class singlyLinkedList
                 Node *index = head;
                 while (index->next != tail)
                 {
-                    // cout << index->value << " "; // For check purpose use only
                     index = index->next;
                 }
                 tail = index;
-                // cout << "\nValue : " << ptr->value << " Tail : " << index->value << endl;// For check purpose use only.
                 ptr = ptr->next;
-                cout << index->value << " ";
-                
+                cout << index->value << endl;
             }
-            
         }
-        
     }
 };
 int main()
 {
+    Node *n1;
+    int count = 0, val = 0,data;
     singlyLinkedList s1;
-    for (int i = 1; i <= 10; i++)
+    cin >>count; // Number of test case
+    for (int i = 0; i < count; i++)
     {
-        Node *n1 = new Node;
-        n1->value = i;
-        s1.insertNode(n1);
+        cin >> val; // How many value you want to insert
+        for (int j = 0; j < val; j++)
+        {
+            data = 0;
+            n1 = new Node;
+            cin >> data;
+            n1->value = data;
+            s1.insertNode(n1);
+        }
+        s1.reversePrint();
+        s1.head = NULL; // Here we assign head as NULL because this is linked list and in second alteration of input this will link to first and then print it again.
+        // So to prevent from this we assigned head as NULL
     }
-    cout << "Printing node in reverse order : ";
-    s1.reversePrint();
-    
 }
